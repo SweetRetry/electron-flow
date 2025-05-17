@@ -1,13 +1,6 @@
-import {
-  Calendar,
-  Home,
-  Inbox,
-  Moon,
-  Search,
-  Settings,
-  Sun,
-} from "lucide-react";
+import { Calendar, Home, Inbox, Moon, Search, Settings, Sun } from "lucide-react";
 
+import { Button } from "@renderer/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -19,7 +12,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@renderer/components/ui/sidebar";
-import { Button } from "@renderer/components/ui/button";
 import { useTheme } from "@renderer/context/theme-provider";
 // Menu items.
 const items = [
@@ -51,18 +43,20 @@ const items = [
 ];
 
 export function AppSidebar() {
-	const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
-    <Sidebar >
+    <Sidebar>
       <SidebarHeader>
-        <div className="flex items-center justify-between ">
+        <div className="flex items-center justify-between px-2">
           <h1>Zen</h1>
-          <div>
-            <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-              {theme === "light" ? <Moon /> : <Sun />}
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          >
+            {theme === "light" ? <Moon /> : <Sun />}
+          </Button>
         </div>
       </SidebarHeader>
       <SidebarContent>

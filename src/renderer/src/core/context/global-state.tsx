@@ -1,7 +1,7 @@
 import { FinalConnectionState, XYPosition } from "@xyflow/react";
-import { createContext, useState, ReactNode, useContext } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
- const GlobalStateContext = createContext<{
+const GlobalStateContext = createContext<{
   connectionState: FinalConnectionState | null;
   setConnectionState: (connectionState: FinalConnectionState | null) => void;
   commandPosition: XYPosition | null;

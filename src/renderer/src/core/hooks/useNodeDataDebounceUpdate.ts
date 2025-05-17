@@ -9,7 +9,7 @@ export const useNodeDataDebounceUpdate = <T>(value: T, callback: (value: T) => v
     debounce((value) => {
       callback(value);
     }, 1000),
-    [],
+    []
   );
 
   const handleChange = useCallback(
@@ -18,7 +18,7 @@ export const useNodeDataDebounceUpdate = <T>(value: T, callback: (value: T) => v
       setInternalValue(value);
       debounceUpdate(value);
     },
-    [debounceUpdate],
+    [debounceUpdate]
   );
 
   useEffect(() => {

@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: [
-    './src/flow/core/**/*.{ts,tsx}',
-    './src/renderer/**/*.{ts,tsx}',
-  ],
+  content: ["./src/flow/core/**/*.{ts,tsx}", "./src/renderer/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
     container: {
@@ -71,5 +68,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [require("tailwindcss-animate"), require("prettier-plugin-tailwindcss")],
+};

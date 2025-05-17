@@ -6,13 +6,11 @@ export default function BaseLayout({ children }: { children: ReactNode }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="w-full h-screen flex flex-col">
-        <header className="flex items-center justify-between">
+      <main className="flex h-screen w-full flex-col">
+        <header className="flex h-12 items-center justify-between px-4">
           <SidebarTrigger />
         </header>
-        <section className="flex-1">
-          {children}
-        </section>
+        <section className="h-full w-full flex-1">{children}</section>
       </main>
     </SidebarProvider>
   );

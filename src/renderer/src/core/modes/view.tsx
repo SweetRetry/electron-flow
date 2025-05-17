@@ -2,17 +2,10 @@ import { type Edge, Node, ReactFlow, ReactFlowProps } from "@xyflow/react";
 import { useMemo } from "react";
 
 import "@xyflow/react/dist/style.css";
+import { ReadonlyProvider } from "../context/readonly";
 
-import { ReadonlyProvider } from "../../context/readonly";
-
-export function ReadonlyFlow({
-  nodes,
-  edges,
-}: {
-  nodes: Node[];
-  edges: Edge[];
-}) {
-  const reactFlowConfigProps: ReactFlowProps<Node, Edge> = useMemo(() => {
+export function ViewModeFlow({ nodes, edges }: { nodes: Node[]; edges: Edge[] }) {
+  const props: ReactFlowProps<Node, Edge> = useMemo(() => {
     return {
       nodes,
       onNodesChange: () => {},
@@ -32,7 +25,7 @@ export function ReadonlyFlow({
   return (
     // 使用 Context Provider 包裹 ReactFlow
     <ReadonlyProvider isReadonly={true}>
-      <ReactFlow {...reactFlowConfigProps} className="bg-background" />
+      <ReactFlow {...props} className="bg-background text-foreground" />
     </ReadonlyProvider>
   );
 }
