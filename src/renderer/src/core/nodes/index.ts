@@ -1,14 +1,16 @@
 import { NodeTypes } from "@xyflow/react";
-import TextNode from "./text";
+import CommandNode from "./command";
 import ImageNode from "./image";
-import VideoNode from "./video";
 import PowerPointNode from "./ppt";
+import TextNode from "./text";
+import VideoNode from "./video";
 
 export enum NodeType {
   TEXT = "text",
   IMAGE = "image",
   VIDEO = "video",
   PPT = "powerpoint",
+  COMMAND = "command",
 }
 
 export const nodeTypes = {
@@ -16,4 +18,5 @@ export const nodeTypes = {
   [NodeType.IMAGE]: ImageNode,
   [NodeType.VIDEO]: VideoNode,
   [NodeType.PPT]: PowerPointNode,
+  [NodeType.COMMAND]: CommandNode,
 } as unknown as NodeTypes;

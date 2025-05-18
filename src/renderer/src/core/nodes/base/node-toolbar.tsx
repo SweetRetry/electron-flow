@@ -1,4 +1,4 @@
-import { calcSizeByZoom } from "@renderer/lib/font-size";
+import { calcSizeByZoom } from "@renderer/core/lib/size";
 import { cn } from "@renderer/lib/utils";
 import { useViewport } from "@xyflow/react";
 import { ReactNode, useMemo } from "react";

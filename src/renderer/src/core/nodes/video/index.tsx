@@ -1,3 +1,4 @@
+import { cn } from "@renderer/lib/utils";
 import { Node, useReactFlow } from "@xyflow/react";
 import { useCallback, useRef, useState } from "react";
 import BaseNode from "../base";
@@ -5,8 +6,8 @@ import NodePrompt from "../base/node-prompt";
 
 export interface VideoNodeData extends Record<string, unknown> {
   title: string;
-  src: string;
-  prompt: string;
+  src?: string;
+  prompt?: string;
 }
 
 const VideoNode = (node: Node<VideoNodeData>) => {
@@ -76,6 +77,7 @@ const VideoNode = (node: Node<VideoNodeData>) => {
         {renderVideo()}
 
         <NodePrompt
+          className={cn(videoSrc ? "invisible group-hover:visible" : "visible")}
           value={node.data.prompt}
           onUpdate={(value) => updateNodeData(node.id, { prompt: value })}
         />

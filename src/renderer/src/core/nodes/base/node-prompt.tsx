@@ -1,9 +1,18 @@
 import { Textarea } from "@renderer/components/ui/textarea";
 import { useNodeDataDebounceUpdate } from "@renderer/core/hooks/useNodeDataDebounceUpdate";
+import { cn } from "@renderer/lib/utils";
 import { useEffect, useRef } from "react";
 
-const NodePrompt = ({ onUpdate, value }: { onUpdate: (value: string) => void; value: string }) => {
-  const { internalValue, handleChange } = useNodeDataDebounceUpdate(value, onUpdate);
+const NodePrompt = ({
+  onUpdate,
+  value,
+  className,
+}: {
+  onUpdate: (value: string) => void;
+  value?: string;
+  className?: string;
+}) => {
+  const { internalValue, handleChange } = useNodeDataDebounceUpdate(value || "", onUpdate);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -17,7 +26,12 @@ const NodePrompt = ({ onUpdate, value }: { onUpdate: (value: string) => void; va
   }, [internalValue]);
 
   return (
-    <div className="nowheel nodrag invisible absolute bottom-0 left-0 z-10 w-full overflow-hidden backdrop-blur-xs group-hover:visible">
+    <div
+      className={cn(
+        "nowheel nodrag absolute bottom-0 left-0 z-10 w-full overflow-hidden backdrop-blur-xs",
+        className
+      )}
+    >
       <Textarea
         ref={textareaRef}
         value={internalValue}

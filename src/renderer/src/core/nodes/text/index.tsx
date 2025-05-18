@@ -7,8 +7,8 @@ import NodePrompt from "../base/node-prompt";
 
 export interface TextNodeData extends Record<string, unknown> {
   title: string;
-  text: string;
-  prompt: string;
+  text?: string;
+  prompt?: string;
 }
 
 const TextNode = (node: Node<TextNodeData>) => {
@@ -20,7 +20,12 @@ const TextNode = (node: Node<TextNodeData>) => {
   });
 
   return (
-    <BaseNode nodeId={node.id} title={node.data.title} onDoubleClick={() => setIsEditing(true)}>
+    <BaseNode
+      nodeId={node.id}
+      title={node.data.title}
+      onDoubleClick={() => setIsEditing(true)}
+      headerExtra={<span className="text-muted-foreground text-xs">Gemini</span>}
+    >
       <div className="relative h-full overflow-hidden">
         {isEditing ? (
           <Textarea
@@ -31,12 +36,13 @@ const TextNode = (node: Node<TextNodeData>) => {
             onBlur={() => setIsEditing(false)}
           />
         ) : (
-          <div className="hide-scrollbar h-full w-full overflow-auto p-2 text-xs text-muted-foreground">
+          <div className="hide-scrollbar text-muted-foreground h-full w-full overflow-auto p-2 text-xs">
             {internalValue || "Enter your text here..."}
           </div>
         )}
 
         <NodePrompt
+          className="visible"
           value={node.data.prompt}
           onUpdate={(value) => updateNodeData(node.id, { prompt: value })}
         />

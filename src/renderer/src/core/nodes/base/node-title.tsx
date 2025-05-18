@@ -1,6 +1,6 @@
 import { Input } from "@renderer/components/ui/input";
 import { useNodeDataDebounceUpdate } from "@renderer/core/hooks/useNodeDataDebounceUpdate";
-import { calcSizeByZoom } from "@renderer/lib/font-size";
+import { calcSizeByZoom } from "@renderer/core/lib/size";
 import { cn } from "@renderer/lib/utils";
 
 export interface NodeTitleProps {
