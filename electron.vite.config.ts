@@ -6,14 +6,25 @@ import { resolve } from "node:path";
 export default defineConfig({
   main: {
     plugins: [externalizeDepsPlugin()],
+    resolve: {
+      alias: {
+        "@helpers": resolve("src/helpers"),
+      },
+    },
   },
   preload: {
     plugins: [externalizeDepsPlugin()],
+    resolve: {
+      alias: {
+        "@helpers": resolve("src/helpers"),
+      },
+    },
   },
   renderer: {
     resolve: {
       alias: {
         "@renderer": resolve("src/renderer/src"),
+        "@helpers": resolve("src/helpers"),
       },
     },
     plugins: [react(), tailwindcss()],

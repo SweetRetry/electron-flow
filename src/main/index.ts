@@ -1,7 +1,9 @@
 import { electronApp, is, optimizer } from "@electron-toolkit/utils";
-import { app, BrowserWindow, ipcMain, shell } from "electron";
+import { app, BrowserWindow, shell } from "electron";
 import { join } from "path";
+
 import icon from "../../resources/icon.png?asset";
+import { registerProjectIpc } from "./projects/register";
 
 function createWindow(): void {
   // Create the browser window.
@@ -25,10 +27,8 @@ function createWindow(): void {
     shell.openExternal(details.url);
     return { action: "deny" };
   });
+  registerProjectIpc();
 
-  // HMR for renderer base on electron-vite cli.
-  // Load the remote URL for development or the local html file for production.
-  ipcMain.on("ping", () => console.log("pong"));
   if (is.dev && process.env["ELECTRON_RENDERER_URL"]) {
     mainWindow.loadURL(process.env["ELECTRON_RENDERER_URL"]);
   } else {

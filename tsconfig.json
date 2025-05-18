@@ -1,12 +1,9 @@
 {
   "files": [],
   "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }],
+  "include": ["src/helpers/**/*.ts"],
   "compilerOptions": {
     "composite": true,
-    "types": ["electron-vite/node"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/renderer/src/*"]
-    }
+    "types": ["electron-vite/node"]
   }
 }

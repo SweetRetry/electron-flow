@@ -1,8 +1,20 @@
 import { electronAPI } from "@electron-toolkit/preload";
-import { contextBridge } from "electron";
+import { ProjectIpcEvent } from "@helpers/project/constant";
+import type { Edge, Node } from "@xyflow/react";
+import { contextBridge, ipcRenderer } from "electron";
 
 // Custom APIs for renderer
-const api = {};
+const api = {
+  saveProject: (projectId: string, nodes: Node[], edges: Edge[]) =>
+    ipcRenderer.invoke(ProjectIpcEvent.SaveProject, projectId, nodes, edges),
+  getProjects: () => ipcRenderer.invoke(ProjectIpcEvent.GetProjects),
+  getProject: (projectId: string) => ipcRenderer.invoke(ProjectIpcEvent.GetProject, projectId),
+  createProject: (project: { name: string; description: string; preview_image: string }) =>
+    ipcRenderer.invoke(ProjectIpcEvent.CreateProject, project),
+
+  sendNotification: (title: string, body: string) =>
+    ipcRenderer.invoke("send-notification", title, body),
+};
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise

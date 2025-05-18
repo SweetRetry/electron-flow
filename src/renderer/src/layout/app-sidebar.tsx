@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Moon, Search, Settings, Sun } from "lucide-react";
+import { BookText, FolderKanban, Moon, Settings, Sun } from "lucide-react";
 
 import { Button } from "@renderer/components/ui/button";
 import {
@@ -13,31 +13,22 @@ import {
   SidebarMenuItem,
 } from "@renderer/components/ui/sidebar";
 import { useTheme } from "@renderer/context/theme-provider";
-// Menu items.
+import { Link } from "react-router-dom";
+
 const items = [
   {
-    title: "Home",
-    url: "#",
-    icon: Home,
+    title: "Projects",
+    url: "/projects",
+    icon: FolderKanban,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    title: "Prompts",
+    url: "/prompts",
+    icon: BookText,
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/settings",
     icon: Settings,
   },
 ];
@@ -67,10 +58,10 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link to={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
