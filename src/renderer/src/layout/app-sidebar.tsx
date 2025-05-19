@@ -1,4 +1,5 @@
 import { BookText, FolderKanban, Moon, Settings, Sun } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 import { Button } from "@renderer/components/ui/button";
 import {
@@ -34,7 +35,26 @@ const items = [
 ];
 
 export function AppSidebar() {
+  const { t } = useTranslation();
   const { theme, setTheme } = useTheme();
+
+  const translatedItems = [
+    {
+      title: t('sidebar.projects'),
+      url: "/projects",
+      icon: FolderKanban,
+    },
+    {
+      title: t('sidebar.prompts'),
+      url: "/prompts",
+      icon: BookText,
+    },
+    {
+      title: "Settings",
+      url: "/settings",
+      icon: Settings,
+    },
+  ];
 
   return (
     <Sidebar>
@@ -52,10 +72,10 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>{t('sidebar.application')}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {translatedItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link to={item.url}>

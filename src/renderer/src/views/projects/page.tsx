@@ -4,8 +4,10 @@ import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CreateProjectDialog } from "./_components/create-project";
+import { useTranslation } from 'react-i18next';
 
 const ProjectsPage = () => {
+  const { t } = useTranslation();
   const [projects, setProjects] = useState<Awaited<ReturnType<typeof ProjectApis.getAll>>>([]);
 
   const [open, setOpen] = useState(false);
@@ -19,11 +21,11 @@ const ProjectsPage = () => {
   return (
     <section className="p-4">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-2xl font-bold">Projects</h2>
+        <h2 className="text-2xl font-bold">{t('sidebar.projects')}</h2>
 
         <Button onClick={() => setOpen(true)}>
           <Plus />
-          New Project
+          {t('project.new')}
         </Button>
       </div>
 

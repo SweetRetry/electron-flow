@@ -12,6 +12,7 @@ import {
   useNodesState,
 } from "@xyflow/react";
 import { useCallback, useMemo } from "react";
+import { useTranslation } from 'react-i18next';
 
 import { Button } from "@renderer/components/ui/button";
 import { useTheme } from "@renderer/context/theme-provider";
@@ -31,6 +32,7 @@ function Flow({
   initialEdges: Edge[];
   projectId: string;
 }) {
+  const { t } = useTranslation();
   const [nodes, _setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -66,25 +68,25 @@ function Flow({
   const handleSaveProject = useCallback(
     async (projectId: string) => {
       if (!projectId) {
-        console.error("Project ID is required to save.");
-        alert("Project ID is required.");
+        console.error(t('project.idRequiredToSave'));
+        alert(t('project.idRequired'));
         return;
       }
       try {
         const result = await window.api.saveProject(projectId, nodes, edges);
         if (result.success) {
-          console.log(`Project saved to: ${result.path}`);
-          alert(`Project saved successfully to: ${result.path}`);
+          console.log(t('project.savedTo', { path: result.path }));
+          alert(t('project.saveSuccess', { path: result.path }));
         } else {
-          console.error("Failed to save project:", result.error);
-          alert(`Failed to save project: ${result.error}`);
+          console.error(t('project.saveFailed', { error: result.error }));
+          alert(t('project.saveFailed', { error: result.error }));
         }
       } catch (error) {
         console.error("Error calling saveProjectData:", error);
-        alert(`An error occurred: ${(error as Error).message}`);
+        alert(t('common.errorOccurred', 'An error occurred: {{message}}', { message: (error as Error).message }));
       }
     },
-    [nodes, edges]
+    [nodes, edges, t]
   );
 
   return (
@@ -94,7 +96,7 @@ function Flow({
       className="bg-background text-foreground relative"
     >
       <Panel position="top-right">
-        <Button onClick={() => handleSaveProject(projectId)}>Save</Button>
+        <Button onClick={() => handleSaveProject(projectId)}>{t('common.save')}</Button>
       </Panel>
       <RegisterPlugins plugins={["placeholder"]} />
 

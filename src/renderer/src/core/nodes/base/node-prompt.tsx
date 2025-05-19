@@ -2,6 +2,7 @@ import { Textarea } from "@renderer/components/ui/textarea";
 import { useNodeDataDebounceUpdate } from "@renderer/core/hooks/useNodeDataDebounceUpdate";
 import { cn } from "@renderer/lib/utils";
 import { useEffect, useRef } from "react";
+import { useTranslation } from 'react-i18next';
 
 const NodePrompt = ({
   onUpdate,
@@ -12,6 +13,7 @@ const NodePrompt = ({
   value?: string;
   className?: string;
 }) => {
+  const { t } = useTranslation();
   const { internalValue, handleChange } = useNodeDataDebounceUpdate(value || "", onUpdate);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -35,7 +37,7 @@ const NodePrompt = ({
       <Textarea
         ref={textareaRef}
         value={internalValue}
-        placeholder="Enter your prompt..."
+        placeholder={t('node.promptPlaceholder')}
         onChange={(e) => handleChange(e.target.value)}
         className="hide-scrollbar z-10 max-h-16 min-h-6 resize-none overflow-auto rounded-none border-none p-2 !text-xs !ring-0 will-change-transform outline-none"
       />

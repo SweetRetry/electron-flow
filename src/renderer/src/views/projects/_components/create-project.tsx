@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslation } from 'react-i18next';
 
 import { Button } from "@renderer/components/ui/button";
 import {
@@ -39,6 +40,7 @@ export const CreateProjectDialog = ({
   open: boolean;
   setOpen: (open: boolean) => void;
 }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof schema>>({
@@ -70,7 +72,7 @@ export const CreateProjectDialog = ({
       setOpen(false);
       navigate(`/projects/${projectId}`);
     } else {
-      toast.error(error ?? "Failed to create project");
+      toast.error(error ?? t('project.createFailed'));
     }
     setLoading(false);
   };
@@ -79,7 +81,7 @@ export const CreateProjectDialog = ({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create Canvas</DialogTitle>
+          <DialogTitle>{t('project.new')}</DialogTitle>
           <DialogDescription />
         </DialogHeader>
         <Form {...form}>
@@ -89,9 +91,9 @@ export const CreateProjectDialog = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>{t('project.form.nameLabel', 'Name')}</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="Enter project name" />
+                    <Input {...field} placeholder={t('project.enterNamePlaceholder')} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -103,9 +105,9 @@ export const CreateProjectDialog = ({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>{t('project.form.descriptionLabel', 'Description')}</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="Enter project description" />
+                    <Input {...field} placeholder={t('project.enterDescriptionPlaceholder')} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -117,7 +119,7 @@ export const CreateProjectDialog = ({
               name="preview_image"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Preview Image</FormLabel>
+                  <FormLabel>{t('project.form.previewImageLabel', 'Preview Image')}</FormLabel>
                   <FormControl>
                     <div className="border-border hover:border-primary relative h-40 w-full cursor-pointer rounded-md border border-dashed">
                       {field.value ? (
@@ -132,7 +134,7 @@ export const CreateProjectDialog = ({
                           onClick={() => fileInputRef.current?.click()}
                         >
                           <Plus className="object-cover text-gray-400" />
-                          <p className="text-gray-400">Click to upload</p>
+                          <p className="text-gray-400">{t('project.form.clickToUpload', 'Click to upload')}</p>
                         </div>
                       )}
                       <input
@@ -161,11 +163,11 @@ export const CreateProjectDialog = ({
         </Form>
         <DialogFooter>
           <Button variant="secondary" onClick={() => setOpen(false)} className="cursor-pointer">
-            Cancel
+            {t('common.cancel', 'Cancel')}
           </Button>
           <Button disabled={loading} onClick={() => handleSubmit()} className="cursor-pointer">
             {loading ? <Loader2 className="mr-2 animate-spin" /> : null}
-            Create
+            {t('common.create', 'Create')}
           </Button>
         </DialogFooter>
       </DialogContent>
