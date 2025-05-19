@@ -1,26 +1,35 @@
 {
-  "welcome": "欢迎来到 React",
-  "sidebar.application": "应用",
-  "sidebar.prompts": "提示",
-  "sidebar.projects": "项目",
-  "node.promptPlaceholder": "输入你的提示...",
-  "project.createFailed": "创建项目失败",
-  "project.enterNamePlaceholder": "输入项目名称",
-  "project.enterDescriptionPlaceholder": "输入项目描述",
-  "project.loading": "项目加载中...",
-  "project.new": "新建项目",
-  "project.idRequiredToSave": "保存需要项目ID。",
-  "project.idRequired": "需要项目ID。",
-  "project.savedTo": "项目已保存至：{{path}}",
-  "project.saveSuccess": "项目成功保存至：{{path}}",
-  "project.saveFailed": "保存项目失败：{{error}}",
-  "common.save": "保存",
-  "project.form.nameLabel": "名称",
-  "project.form.descriptionLabel": "描述",
-  "project.form.previewImageLabel": "预览图",
-  "project.form.clickToUpload": "点击上传",
-  "common.cancel": "取消",
-  "common.create": "创建",
-  "project.idMissing": "项目ID丢失。",
-  "common.errorOccurred": "发生错误：{{message}}"
+  "sidebar": {
+    "application": "应用",
+    "prompts": "提示",
+    "projects": "项目"
+  },
+  "node": {
+    "promptPlaceholder": "输入你的提示..."
+  },
+  "project": {
+    "createFailed": "创建项目失败",
+    "enterNamePlaceholder": "输入项目名称",
+    "enterDescriptionPlaceholder": "输入项目描述",
+    "loading": "项目加载中...",
+    "new": "新建项目",
+    "idRequiredToSave": "保存需要项目ID。",
+    "idRequired": "需要项目ID。",
+    "savedTo": "项目已保存至：{{path}}",
+    "saveSuccess": "项目成功保存至：{{path}}",
+    "saveFailed": "保存项目失败：{{error}}",
+    "form": {
+      "nameLabel": "名称",
+      "descriptionLabel": "描述",
+      "previewImageLabel": "预览图",
+      "clickToUpload": "点击上传"
+    },
+    "idMissing": "项目ID丢失。"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "create": "创建",
+    "errorOccurred": "发生错误：{{message}}"
+  }
 } 

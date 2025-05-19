@@ -1,0 +1,167 @@
+{
+  "language": "English",
+  "prompts": {
+    "text_to_text": [
+      {
+        "id": 1,
+        "style": "Academic Writing Style",
+        "description": "An article on the future of quantum computing, exploring its applications in cryptography, with introduction, body, and conclusion, logically structured"
+      },
+      {
+        "id": 2,
+        "style": "News Report Style",
+        "description": "A report on global climate change, detailing recent extreme weather events and their impacts, with lead, analysis, and expert comments"
+      },
+      {
+        "id": 3,
+        "style": "Popular Science Style",
+        "description": "An article on black hole formation and characteristics, accessible with illustrative diagrams"
+      },
+      {
+        "id": 4,
+        "style": "Narrative Essay Style",
+        "description": "An essay recalling childhood in a rural village, describing fields, streams, and old houses, emotionally rich"
+      },
+      {
+        "id": 5,
+        "style": "Technical Documentation Style",
+        "description": "A tutorial on Python programming basics, covering variables, loops, and functions, clearly structured"
+      }
+    ],
+    "text_to_image": [
+      {
+        "id": 1,
+        "style": "Impressionist Style",
+        "description": "A painting of a rainy Paris street, pedestrians with umbrellas, streets reflecting lights, in soft blue-yellow tones"
+      },
+      {
+        "id": 2,
+        "style": "Steampunk Style",
+        "description": "A mechanical city scene with giant gears and steam pipes, airships in the sky, in copper and dark brown tones"
+      },
+      {
+        "id": 3,
+        "style": "Traditional Japanese Ukiyo-e Style",
+        "description": "A scene of Mount Fuji with cherry blossom forests, a samurai standing with a sword, sunset glow in the background"
+      },
+      {
+        "id": 4,
+        "style": "Surrealist Style",
+        "description": "A dreamlike scene with floating clocks and shattered mirrors, purple starry sky background"
+      },
+      {
+        "id": 5,
+        "style": "Minimalist Style",
+        "description": "A desert sunset with a single cactus silhouette, orange-red gradient background"
+      }
+    ],
+    "image_text_to_image": [
+      {
+        "id": 1,
+        "style": "Renaissance Style",
+        "description": "Based on a classical portrait painting (to be uploaded), extend to a royal banquet scene, nobles at a long table, candlelight flickering, in warm tones"
+      },
+      {
+        "id": 2,
+        "style": "Cyberpunk Style",
+        "description": "Based on a city night photo (to be uploaded), extend to a futuristic cyber city, neon lights and drones, in purple-cyan tones"
+      },
+      {
+        "id": 3,
+        "style": "Watercolor Style",
+        "description": "Based on a flower photo (to be uploaded), extend to a pastoral flower field, butterflies dancing, in soft pink-green tones"
+      },
+      {
+        "id": 4,
+        "style": "Cartoon Style",
+        "description": "Based on an animal photo (to be uploaded), extend to a forest adventure scene, anthropomorphic animals in adventure gear, in bright tones"
+      },
+      {
+        "id": 5,
+        "style": "Realistic Style",
+        "description": "Based on a mountain photo (to be uploaded), extend to climbers scaling a snowy peak, misty clouds in the background, in cool tones"
+      }
+    ],
+    "image_to_text": [
+      {
+        "id": 1,
+        "style": "Narrative Text",
+        "description": "Based on an old castle photo (to be uploaded), generate a 600-word fantasy story about mysterious events in the castle, in Gothic style"
+      },
+      {
+        "id": 2,
+        "style": "Popular Science Text",
+        "description": "Based on a starry sky photo (to be uploaded), generate a 500-word article on major constellations and astronomy, in accessible style"
+      },
+      {
+        "id": 3,
+        "style": "Descriptive Text",
+        "description": "Based on a beach photo (to be uploaded), generate a 400-word essay describing a beach at dawn, in poetic style"
+      },
+      {
+        "id": 4,
+        "style": "Historical Text",
+        "description": "Based on an ancient building photo (to be uploaded), generate a 500-word article on the building’s historical stories, in formal style"
+      },
+      {
+        "id": 5,
+        "style": "Travelogue Text",
+        "description": "Based on a city landmark photo (to be uploaded), generate a 600-word travelogue on the landmark’s culture and vibe, in casual style"
+      }
+    ],
+    "image_text_to_video": [
+      {
+        "id": 1,
+        "style": "Vintage Film Style",
+        "description": "Based on an old street photo (to be uploaded), generate a 40-second video of early 20th-century street life, carriages and pedestrians, in black-white and sepia tones"
+      },
+      {
+        "id": 2,
+        "style": "Sci-Fi Style",
+        "description": "Based on a spaceship photo (to be uploaded), generate a 50-second video of a spaceship traveling through space, planets and nebulae in the background"
+      },
+      {
+        "id": 3,
+        "style": "Cartoon Animation Style",
+        "description": "Based on a children’s illustration (to be uploaded), generate a 30-second video of cartoon animals at a forest party, in bright tones"
+      },
+      {
+        "id": 4,
+        "style": "Ink Animation Style",
+        "description": "Based on a landscape painting (to be uploaded), generate a 45-second video of flowing mountains and rivers, birds flying, in black-white and green tones"
+      },
+      {
+        "id": 5,
+        "style": "Realistic Style",
+        "description": "Based on a lake photo (to be uploaded), generate a 40-second video of a lake reflecting sunrise, fish leaping, in warm tones"
+      }
+    ],
+    "image_to_video": [
+      {
+        "id": 1,
+        "style": "Surrealist Style",
+        "description": "Based on an abstract geometric painting (to be uploaded), generate a 60-second video of rotating and merging shapes, colorful nebulae background"
+      },
+      {
+        "id": 2,
+        "style": "Realistic Style",
+        "description": "Based on a forest photo (to be uploaded), generate a 50-second video of morning mist and deer running, in green-brown tones"
+      },
+      {
+        "id": 3,
+        "style": "Cyberpunk Style",
+        "description": "Based on a city photo (to be uploaded), generate a 45-second video of a futuristic city night, neon lights and drones"
+      },
+      {
+        "id": 4,
+        "style": "Oil Painting Style",
+        "description": "Based on a landscape painting (to be uploaded), generate a 40-second video of wheat fields swaying, distant mountains in mist, in warm tones"
+      },
+      {
+        "id": 5,
+        "style": "Cartoon Style",
+        "description": "Based on an ocean illustration (to be uploaded), generate a 30-second video of cartoon fish swimming among coral reefs, in bright tones"
+      }
+    ]
+  }
+}
