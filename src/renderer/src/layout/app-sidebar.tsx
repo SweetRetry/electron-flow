@@ -1,5 +1,5 @@
 import { BookText, FolderKanban, Moon, Settings, Sun } from "lucide-react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@renderer/components/ui/button";
 import {
@@ -16,36 +16,18 @@ import {
 import { useTheme } from "@renderer/context/theme-provider";
 import { Link } from "react-router-dom";
 
-const items = [
-  {
-    title: "Projects",
-    url: "/projects",
-    icon: FolderKanban,
-  },
-  {
-    title: "Prompts",
-    url: "/prompts",
-    icon: BookText,
-  },
-  {
-    title: "Settings",
-    url: "/settings",
-    icon: Settings,
-  },
-];
-
 export function AppSidebar() {
   const { t } = useTranslation();
   const { theme, setTheme } = useTheme();
 
   const translatedItems = [
     {
-      title: t('sidebar.projects'),
+      title: t("sidebar.projects"),
       url: "/projects",
       icon: FolderKanban,
     },
     {
-      title: t('sidebar.prompts'),
+      title: t("sidebar.prompts"),
       url: "/prompts",
       icon: BookText,
     },
@@ -72,15 +54,15 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>{t('sidebar.application')}</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("sidebar.application")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {translatedItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link to={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                      <item.icon size={16} className="mr-2" />
+                      <span className="text-sm">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

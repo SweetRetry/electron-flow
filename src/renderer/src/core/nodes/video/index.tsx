@@ -2,7 +2,9 @@ import { cn } from "@renderer/lib/utils";
 import { Node, useReactFlow } from "@xyflow/react";
 import { useCallback, useRef, useState } from "react";
 import BaseNode from "../base";
+import NodeGeneration from "../base/node-generation";
 import NodePrompt from "../base/node-prompt";
+import NodePromptSelect from "../base/node-prompt-select";
 
 export interface VideoNodeData extends Record<string, unknown> {
   title: string;
@@ -81,6 +83,16 @@ const VideoNode = (node: Node<VideoNodeData>) => {
           value={node.data.prompt}
           onUpdate={(value) => updateNodeData(node.id, { prompt: value })}
         />
+
+        <div className="absolute right-2 bottom-1 z-10 flex w-12 space-x-1">
+          <NodePromptSelect 
+            type="video"
+            onSelect={(value) => {
+              updateNodeData(node.id, { prompt: value });
+            }}
+          />
+          <NodeGeneration />
+        </div>
       </div>
     </BaseNode>
   );

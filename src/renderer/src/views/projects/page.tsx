@@ -2,9 +2,9 @@ import { Button } from "@renderer/components/ui/button";
 import { ProjectApis } from "@renderer/endpoints/project";
 import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { CreateProjectDialog } from "./_components/create-project";
-import { useTranslation } from 'react-i18next';
 
 const ProjectsPage = () => {
   const { t } = useTranslation();
@@ -21,11 +21,11 @@ const ProjectsPage = () => {
   return (
     <section className="p-4">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-2xl font-bold">{t('sidebar.projects')}</h2>
+        <h2 className="text-2xl font-bold">{t("sidebar.projects")}</h2>
 
-        <Button onClick={() => setOpen(true)}>
+        <Button onClick={() => setOpen(true)} className="cursor-pointer" variant="secondary">
           <Plus />
-          {t('project.new')}
+          {t("project.new")}
         </Button>
       </div>
 
@@ -33,7 +33,7 @@ const ProjectsPage = () => {
         {projects.map((project) => (
           <li className="basis-1/4 p-2" key={project.id}>
             <div
-              className="hover:bg-muted cursor-pointer space-y-2 rounded border p-2"
+              className="hover:bg-secondary cursor-pointer space-y-2 rounded border p-2 transition-colors"
               onClick={() => navigate(`/projects/${project.id}`)}
             >
               <h3 className="w-full font-semibold">{project.name}</h3>

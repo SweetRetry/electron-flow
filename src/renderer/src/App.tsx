@@ -1,7 +1,7 @@
 import { JSX } from "react";
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "./context/theme-provider";
-import { router } from "./router";
+import { router } from "./router/router";
 
 function App(): JSX.Element {
 

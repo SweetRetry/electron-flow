@@ -1,0 +1,132 @@
+{
+  "language": "English",
+  "prompts": {
+    "text": [
+      {
+        "id": 1,
+        "style": "Academic Writing Style",
+        "description": "An article on the future of quantum computing, exploring its applications in cryptography, with introduction, body, and conclusion, logically structured",
+        "tags": ["T2T", "Academic", "Technology"]
+      },
+      {
+        "id": 2,
+        "style": "News Report Style",
+        "description": "A report on global climate change, detailing recent extreme weather events and their impacts, with lead, analysis, and expert comments",
+        "tags": ["T2T", "News"]
+      },
+      {
+        "id": 3,
+        "style": "Popular Science Style",
+        "description": "An article on black hole formation and characteristics, accessible with illustrative diagrams",
+        "tags": ["T2T"]
+      },
+      {
+        "id": 4,
+        "style": "Narrative Essay Style",
+        "description": "An essay recalling childhood in a rural village, describing fields, streams, and old houses, emotionally rich",
+        "tags": ["T2T"]
+      },
+      {
+        "id": 5,
+        "style": "Technical Documentation Style",
+        "description": "A tutorial on Python programming basics, covering variables, loops, and functions, clearly structured",
+        "tags": ["T2T"]
+      }
+    ],
+    "image": [
+      {
+        "id": 1,
+        "style": "Impressionist Style",
+        "description": "A painting of a rainy Paris street, pedestrians with umbrellas, streets reflecting lights, in soft blue-yellow tones",
+        "tags": ["T2I"]
+      },
+      {
+        "id": 2,
+        "style": "Steampunk Style",
+        "description": "A mechanical city scene with giant gears and steam pipes, airships in the sky, in copper and dark brown tones",
+        "tags": ["T2I"]
+      },
+      {
+        "id": 3,
+        "style": "Traditional Japanese Ukiyo-e Style",
+        "description": "A scene of Mount Fuji with cherry blossom forests, a samurai standing with a sword, sunset glow in the background",
+        "tags": ["T2I"]
+      },
+      {
+        "id": 4,
+        "style": "Surrealist Style",
+        "description": "A dreamlike scene with floating clocks and shattered mirrors, purple starry sky background",
+        "tags": ["T2I"]
+      },
+      {
+        "id": 5,
+        "style": "Minimalist Style",
+        "description": "A desert sunset with a single cactus silhouette, orange-red gradient background",
+        "tags": ["T2I"]
+      },
+      {
+        "id": 6,
+        "style": "Renaissance Style",
+        "description": "Based on a classical portrait painting (to be uploaded), extend to a royal banquet scene, nobles at a long table, candlelight flickering, in warm tones",
+        "tags": ["IT2I"]
+      },
+      {
+        "id": 7,
+        "style": "Cyberpunk Style",
+        "description": "Based on a city night photo (to be uploaded), extend to a futuristic cyber city, neon lights and drones, in purple-cyan tones",
+        "tags": ["IT2I"]
+      },
+      {
+        "id": 8,
+        "style": "Watercolor Style",
+        "description": "Based on a flower photo (to be uploaded), extend to a pastoral flower field, butterflies dancing, in soft pink-green tones",
+        "tags": ["IT2I"]
+      },
+      {
+        "id": 9,
+        "style": "Cartoon Style",
+        "description": "Based on an animal photo (to be uploaded), extend to a forest adventure scene, anthropomorphic animals in adventure gear, in bright tones",
+        "tags": ["IT2I"]
+      },
+      {
+        "id": 10,
+        "style": "Realistic Style",
+        "description": "Based on a mountain photo (to be uploaded), extend to climbers scaling a snowy peak, misty clouds in the background, in cool tones",
+        "tags": ["IT2I"]
+      }
+    ],
+
+    "video": [
+      {
+        "id": 1,
+        "style": "Surrealist Style",
+        "description": "Based on an abstract geometric painting (to be uploaded), generate a 60-second video of rotating and merging shapes, colorful nebulae background",
+        "tags": ["I2V"]
+      },
+      {
+        "id": 2,
+        "style": "Realistic Style",
+        "description": "Based on a forest photo (to be uploaded), generate a 50-second video of morning mist and deer running, in green-brown tones",
+        "tags": ["I2V"]
+      },
+      {
+        "id": 3,
+        "style": "Cyberpunk Style",
+        "description": "Based on a city photo (to be uploaded), generate a 45-second video of a futuristic city night, neon lights and drones",
+        "tags": ["I2V"]
+      },
+      {
+        "id": 4,
+        "style": "Oil Painting Style",
+        "description": "Based on a landscape painting (to be uploaded), generate a 40-second video of wheat fields swaying, distant mountains in mist, in warm tones",
+        "tags": ["I2V"]
+      },
+      {
+        "id": 5,
+        "style": "Cartoon Style",
+        "description": "Based on an ocean illustration (to be uploaded), generate a 30-second video of cartoon fish swimming among coral reefs, in bright tones",
+        "tags": ["I2V"]
+      }
+    ]
+  }
+}
