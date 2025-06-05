@@ -4,11 +4,7 @@ import { app } from "electron";
 import fs from "fs/promises";
 import path from "path";
 
-export const createProject = async ({
-  name,
-  description,
-  preview_image,
-}: Omit<ProjectManifest, "created_at">) => {
+export const createProject = async ({ name } = { name: "Untitled" }) => {
   const userDataPath = app.getPath("userData");
   const projectId = crypto.randomUUID();
   const projectDir = path.join(userDataPath, "projects", projectId);
@@ -18,10 +14,10 @@ export const createProject = async ({
     path.join(projectDir, `manifest.json`),
     JSON.stringify({
       name,
-      description,
-      preview_image,
+      preview_image: "",
       created_at,
-    } as ProjectManifest)
+      updated_at: created_at,
+    })
   );
 
   return { success: true, projectId };
@@ -41,7 +37,7 @@ export const getProjects = async () => {
       return {
         id: projectId,
         ...manifest,
-      } as { id: string } & ProjectManifest;
+      } as ProjectManifest;
     })
   );
 

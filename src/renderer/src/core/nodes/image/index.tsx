@@ -1,10 +1,7 @@
-import { handleImageSizeByLoadedMetadata } from "@renderer/core/lib/size";
-import { cn } from "@renderer/lib/utils";
+import { handleImageSize } from "@renderer/core/lib/size";
 import { Node, useReactFlow } from "@xyflow/react";
 import BaseNode from "../base";
-import NodeGeneration from "../base/node-generation";
-import NodePrompt from "../base/node-prompt";
-import NodePromptSelect from "../base/node-prompt-select";
+import { NodeFooter } from "../base/footer";
 
 export interface ImageNodeData extends Record<string, unknown> {
   title: string;
@@ -13,11 +10,12 @@ export interface ImageNodeData extends Record<string, unknown> {
 }
 
 const ImageNode = (node: Node<ImageNodeData>) => {
-  const { updateNode, updateNodeData } = useReactFlow();
+  const { updateNode } = useReactFlow();
   const imageSrc = node.data.src;
 
-  const handleLoadedMetadata = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    handleImageSizeByLoadedMetadata(e, (size) => {
+  const handleLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    handleImageSize(e, (size) => {
+      console.log("size", size);
       updateNode(node.id, {
         width: size.width,
         height: size.height,
@@ -33,7 +31,7 @@ const ImageNode = (node: Node<ImageNodeData>) => {
             src={imageSrc}
             alt={node.data.title}
             className="h-full w-full object-cover"
-            onLoadedMetadata={handleLoadedMetadata}
+            onLoad={handleLoad}
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center">
@@ -41,21 +39,7 @@ const ImageNode = (node: Node<ImageNodeData>) => {
           </div>
         )}
 
-        <NodePrompt
-          className={cn(imageSrc ? "invisible group-hover:visible" : "visible")}
-          value={node.data.prompt}
-          onUpdate={(value) => updateNodeData(node.id, { prompt: value })}
-        />
-
-        <div className="absolute right-2 bottom-1 z-10 flex w-12 space-x-1">
-          <NodePromptSelect 
-            type="image"
-            onSelect={(value) => {
-              updateNodeData(node.id, { prompt: value });
-            }}
-          />
-          <NodeGeneration />
-        </div>
+        <NodeFooter nodeId={node.id} promptValue={node.data.prompt} promptSelectType="image" />
       </div>
     </BaseNode>
   );

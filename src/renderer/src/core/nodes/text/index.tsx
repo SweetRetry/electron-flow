@@ -4,9 +4,7 @@ import { cn } from "@renderer/lib/utils";
 import { Node, useReactFlow } from "@xyflow/react";
 import { useState } from "react";
 import BaseNode from "../base";
-import NodeGeneration from "../base/node-generation";
-import NodePrompt from "../base/node-prompt";
-import NodePromptSelect from "../base/node-prompt-select";
+import { NodeFooter } from "../base/footer";
 import MarkdownPreview from "./markdown-preview";
 
 export interface TextNodeData extends Record<string, unknown> {
@@ -65,26 +63,13 @@ const TextNode = (node: Node<TextNodeData>) => {
           )}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          placeholder="输入文本内容..."
+          placeholder="输入文本内容...(支持Markdown语法)"
           value={internalValue as string}
           onChange={(e) => handleChange(e.target.value)}
           autoFocus
         />
 
-        <NodePrompt
-          value={node.data.prompt}
-          onUpdate={(value) => updateNodeData(node.id, { prompt: value })}
-        />
-
-        <div className="absolute right-2 bottom-1 z-10 flex w-12 space-x-1">
-          <NodePromptSelect
-            type="text"
-            onSelect={(value) => {
-              updateNodeData(node.id, { prompt: value });
-            }}
-          />
-          <NodeGeneration />
-        </div>
+        <NodeFooter nodeId={node.id} promptValue={node.data.prompt} promptSelectType="text" />
       </div>
     </BaseNode>
   );

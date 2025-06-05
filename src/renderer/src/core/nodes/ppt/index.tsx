@@ -1,5 +1,5 @@
 import { Dialog, DialogContent } from "@renderer/components/ui/dialog";
-import { handleImageSizeByLoadedMetadata } from "@renderer/core/lib/size";
+import { handleImageSize } from "@renderer/core/lib/size";
 import { Node, useReactFlow } from "@xyflow/react";
 import { useState } from "react";
 import BaseNode from "../base";
@@ -19,7 +19,7 @@ const PowerPointNode = (node: Node<PowerPointNodeData>) => {
   const { updateNode } = useReactFlow();
 
   const handleLoadedMetadata = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    handleImageSizeByLoadedMetadata(e, (size) => {
+    handleImageSize(e, (size) => {
       updateNode(node.id, {
         width: size.width,
         height: size.height,

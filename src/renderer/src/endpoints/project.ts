@@ -1,4 +1,3 @@
-import { ProjectManifest } from "@helper/project/type";
 import { Edge, Node } from "@xyflow/react";
 
 export class ProjectApis {
@@ -21,7 +20,7 @@ export class ProjectApis {
     return projects;
   }
 
-  static async create(project: Omit<ProjectManifest, "created_at">) {
+  static async create(project: { name: string }) {
     const { success, error, projectId } = await window.api.createProject(project);
     if (success) {
       return { success: true, projectId };

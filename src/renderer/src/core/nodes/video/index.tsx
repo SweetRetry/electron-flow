@@ -1,10 +1,8 @@
-import { cn } from "@renderer/lib/utils";
+import { handleVideoSize } from "@renderer/core/lib/size";
 import { Node, useReactFlow } from "@xyflow/react";
 import { useCallback, useRef, useState } from "react";
 import BaseNode from "../base";
-import NodeGeneration from "../base/node-generation";
-import NodePrompt from "../base/node-prompt";
-import NodePromptSelect from "../base/node-prompt-select";
+import { NodeFooter } from "../base/footer";
 
 export interface VideoNodeData extends Record<string, unknown> {
   title: string;
@@ -13,7 +11,7 @@ export interface VideoNodeData extends Record<string, unknown> {
 }
 
 const VideoNode = (node: Node<VideoNodeData>) => {
-  const { updateNode, updateNodeData } = useReactFlow();
+  const { updateNode } = useReactFlow();
 
   const videoSrc = node.data.src;
 
@@ -35,9 +33,11 @@ const VideoNode = (node: Node<VideoNodeData>) => {
 
   const onLoadedMetadata = useCallback(() => {
     if (videoRef.current) {
-      updateNode(node.id, {
-        width: videoRef.current.width,
-        height: videoRef.current.height,
+      handleVideoSize(videoRef.current, (size) => {
+        updateNode(node.id, {
+          width: size.width,
+          height: size.height,
+        });
       });
       setLoading(false);
     }
@@ -78,21 +78,7 @@ const VideoNode = (node: Node<VideoNodeData>) => {
       <div className="relative h-full overflow-hidden rounded">
         {renderVideo()}
 
-        <NodePrompt
-          className={cn(videoSrc ? "invisible group-hover:visible" : "visible")}
-          value={node.data.prompt}
-          onUpdate={(value) => updateNodeData(node.id, { prompt: value })}
-        />
-
-        <div className="absolute right-2 bottom-1 z-10 flex w-12 space-x-1">
-          <NodePromptSelect 
-            type="video"
-            onSelect={(value) => {
-              updateNodeData(node.id, { prompt: value });
-            }}
-          />
-          <NodeGeneration />
-        </div>
+        <NodeFooter nodeId={node.id} promptValue={node.data.prompt} promptSelectType="video" />
       </div>
     </BaseNode>
   );

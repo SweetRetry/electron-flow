@@ -9,7 +9,7 @@ const api = {
     ipcRenderer.invoke(ProjectIpcEvent.SaveProject, projectId, nodes, edges),
   getProjects: () => ipcRenderer.invoke(ProjectIpcEvent.GetProjects),
   getProject: (projectId: string) => ipcRenderer.invoke(ProjectIpcEvent.GetProject, projectId),
-  createProject: (project: { name: string; description: string; preview_image: string }) =>
+  createProject: (project: { name: string; preview_image?: string }) =>
     ipcRenderer.invoke(ProjectIpcEvent.CreateProject, project),
 
   sendNotification: (title: string, body: string) =>

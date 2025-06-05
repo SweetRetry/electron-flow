@@ -5,13 +5,14 @@ import {
   CommandItem,
   CommandList,
 } from "@renderer/components/ui/command";
-import { Handle, Node, Position, useReactFlow } from "@xyflow/react";
-
-import { ReactNode, useCallback, useMemo } from "react";
-
 import { createImageNode, createTextNode, createVideoNode } from "@renderer/core/lib/factory";
+import { Handle, Node, Position, useReactFlow } from "@xyflow/react";
 import { ImageIcon, LetterTextIcon, VideoIcon } from "lucide-react";
+import { ReactNode, useCallback, useMemo } from "react";
 import { useGlobalState } from "../../context/global-state";
+
+import MockImage from "../../../assets/1062-536x354.jpg";
+import MockVideo from "../../../assets/e03hi7.mp4";
 
 export interface CommandConfig {
   title: string;
@@ -41,6 +42,7 @@ const defaultCommands: CommandConfig[] = [
         onClick: () =>
           createImageNode({
             title: "图片",
+            src: MockImage,
           }),
       },
       {
@@ -49,6 +51,7 @@ const defaultCommands: CommandConfig[] = [
         onClick: () =>
           createVideoNode({
             title: "视频",
+            src: MockVideo,
           }),
       },
     ],
@@ -110,7 +113,7 @@ const CommandNode = (commandNode: Node) => {
     const fromNodeId = connectionState?.fromNode?.id;
 
     const fromNode = getNode(fromNodeId || "");
-    
+
     const newNode = await onClick(fromNode);
 
     const edges = getEdges();

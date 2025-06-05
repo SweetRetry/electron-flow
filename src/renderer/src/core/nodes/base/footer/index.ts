@@ -1,0 +1,1 @@
+export { default as NodeFooter } from './node-footer'; 

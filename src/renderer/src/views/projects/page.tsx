@@ -1,18 +1,28 @@
 import { Button } from "@renderer/components/ui/button";
 import { ProjectApis } from "@renderer/endpoints/project";
+import { DayjsHelper } from "@renderer/lib/dayjs-helper";
 import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { CreateProjectDialog } from "./_components/create-project";
+import { toast } from "sonner";
 
 const ProjectsPage = () => {
   const { t } = useTranslation();
   const [projects, setProjects] = useState<Awaited<ReturnType<typeof ProjectApis.getAll>>>([]);
 
-  const [open, setOpen] = useState(false);
-
   const navigate = useNavigate();
+
+  const handleCreateProject = async () => {
+    const { success, error, projectId } = await window.api.createProject({
+      name: "Untitled",
+    });
+    if (success) {
+      navigate(`/projects/${projectId}`);
+    } else {
+      toast.error(error ?? t("project.createFailed"));
+    }
+  };
 
   useEffect(() => {
     ProjectApis.getAll().then(setProjects);
@@ -23,7 +33,7 @@ const ProjectsPage = () => {
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-2xl font-bold">{t("sidebar.projects")}</h2>
 
-        <Button onClick={() => setOpen(true)} className="cursor-pointer" variant="secondary">
+        <Button onClick={handleCreateProject} className="cursor-pointer" variant="secondary">
           <Plus />
           {t("project.new")}
         </Button>
@@ -36,19 +46,20 @@ const ProjectsPage = () => {
               className="hover:bg-secondary cursor-pointer space-y-2 rounded border p-2 transition-colors"
               onClick={() => navigate(`/projects/${project.id}`)}
             >
-              <h3 className="w-full font-semibold">{project.name}</h3>
-              <p className="text-muted-foreground text-sm">{project.description}</p>
               <img
                 src={project.preview_image}
                 alt={project.name}
                 className="h-40 w-full rounded-md object-cover"
               />
+
+              <h3 className="w-full font-semibold">{project.name}</h3>
+              <p className="text-muted-foreground text-sm">
+                {DayjsHelper.getRelativeTime(project.updated_at)}
+              </p>
             </div>
           </li>
         ))}
       </ul>
-
-      <CreateProjectDialog open={open} setOpen={setOpen} />
     </section>
   );
 };
