@@ -1,4 +1,4 @@
-import { BookText, FolderKanban, Moon, Settings, Sun } from "lucide-react";
+import { BookText, FolderKanban, ImageIcon, Moon, Settings, Sun } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@renderer/components/ui/button";
@@ -30,6 +30,11 @@ export function AppSidebar() {
       title: t("sidebar.prompts"),
       url: "/prompts",
       icon: BookText,
+    },
+    {
+      title: t("sidebar.generation"),
+      url: "/generation-test",
+      icon: ImageIcon,
     },
     {
       title: "Settings",

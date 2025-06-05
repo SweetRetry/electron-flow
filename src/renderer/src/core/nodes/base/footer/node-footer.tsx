@@ -65,7 +65,9 @@ const NodeFooter = ({ nodeId, promptValue, promptSelectType, className }: NodeFo
             <TextSelectIcon />
           </Button>
         </PromptSelect>
-        <NodeGeneration />
+        {(promptSelectType === "image" || promptSelectType === "video") && (
+          <NodeGeneration nodeId={nodeId} nodeType={promptSelectType} prompt={internalValue} />
+        )}
       </div>
     </>
   );
