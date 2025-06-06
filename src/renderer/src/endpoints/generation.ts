@@ -42,9 +42,11 @@ export class GenerationApis {
     return alovaInstance.Post<GenerationTaskResponse>('/api/v1/ai/video/task', data);
   }
 
-  // 获取任务结果
+  // 获取任务结果 (轮询时禁用缓存)
   static getTaskResult(taskId: string) {
-    return alovaInstance.Get<TaskResultResponse>(`/api/v1/ai/task/result/${taskId}`);
+    return alovaInstance.Get<TaskResultResponse>(`/api/v1/ai/task/result/${taskId}`, {
+      cacheFor: 0, // 禁用缓存，每次都发起真实请求
+    });
   }
 
   // 删除任务

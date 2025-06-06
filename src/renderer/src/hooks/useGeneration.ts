@@ -28,33 +28,36 @@ export function useGeneration(options: UseGenerationOptions = {}) {
         try {
           console.log(`轮询任务结果: ${taskId}`);
           const result = await GenerationApis.getTaskResult(taskId);
+
           console.log(`轮询响应:`, result);
 
           if (result.status === "completed") {
             // 任务完成
             console.log("任务完成，停止轮询");
-            clearInterval(pollTimerRef.current);
             setLoading(false);
             onSuccess?.(result);
             toast.success("生成完成！");
           } else if (result.status === "failed") {
             // 任务失败
             console.log("任务失败，停止轮询");
-            clearInterval(pollTimerRef.current);
             setLoading(false);
             onError?.(result.error || "生成失败");
             toast.error(result.error || "生成失败");
           } else if (result.status === "pending" || result.status === "processing") {
             // 任务进行中，继续轮询
-            console.log(`任务状态: ${result.status}，继续轮询`);
+            console.log(`任务状态: ${result.status}，等待${pollInterval}ms后继续轮询`);
             toast.loading("正在生成中...", { id: taskId });
+            // 等待指定时间后继续轮询
+            pollTimerRef.current = setTimeout(poll, pollInterval);
           } else {
-            console.log(`未知任务状态: ${result.status}，继续轮询`);
+            console.log(`未知任务状态: ${result.status}，等待${pollInterval}ms后继续轮询`);
             toast.loading("正在生成中...", { id: taskId });
+            // 等待指定时间后继续轮询
+            pollTimerRef.current = setTimeout(poll, pollInterval);
           }
         } catch (error) {
           console.error("轮询任务结果失败:", error);
-          clearInterval(pollTimerRef.current);
+          toast.dismiss(taskId);
           setLoading(false);
           setError(error);
           onError?.(error);
@@ -64,9 +67,6 @@ export function useGeneration(options: UseGenerationOptions = {}) {
 
       // 立即执行一次
       poll();
-
-      // 设置定时轮询
-      pollTimerRef.current = setInterval(poll, pollInterval);
     },
     [onSuccess, onError, pollInterval]
   );
@@ -74,7 +74,7 @@ export function useGeneration(options: UseGenerationOptions = {}) {
   // 停止轮询
   const stopPolling = useCallback(() => {
     if (pollTimerRef.current) {
-      clearInterval(pollTimerRef.current);
+      clearTimeout(pollTimerRef.current);
       pollTimerRef.current = undefined;
     }
     if (currentTaskIdRef.current) {
